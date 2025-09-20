@@ -5,30 +5,73 @@
 
 
 <style>
-    section {
+    .news-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 700px;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+}
 
-        height: 90vh;
-    }
+.news-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
 
-    .container-fluid {
-        position: relative;
-        top: 50px;
-        max-width: 700px;
-        margin: auto;
-    }
+.news-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+}
 
-    .comment {
-        width: 100%;
-    }
+.news-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333333;
+    margin: 0;
+}
 
-    .newscard {
-        box-shadow: 3px 3px 10px 2px black;
-        max-width: 700px;
-    }
+.news-content {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
 
-    /* body {
-        background-color: #D2CCDD;
-    } */
+.news-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.love-btn,
+.comment-btn {
+    background-color: #f5f5f5;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.love-btn:hover {
+    background-color: #ffe4e4;
+    color: #e60000;
+}
+
+.comment-btn:hover {
+    background-color: #e6f0ff;
+    color: #0055cc;
+}
+
 </style>
 
 
@@ -39,33 +82,24 @@
         <div class="container-fluid">
             <!-- for viewing the post of the newsinterface -->
             @foreach($news as $item)
-            <div class="newscard">
-                <table>
-                    <td>
-                        <div class="row" style=" color:black; font-weight:bold; font-family:Arial; text-shadow:2px 2px white;">
-                            <h3 style="color:red; text-shadow:1px 1px black; font-weight:bold; position:relative;">
-                                {{$item->headline}}</h1>
-                        </div>
-                        <div class="row" style="position:relative; font-weight:bold;">
-                            <p style="color: black; text-shadow:2px 2px white;">Post-time:{{$item->created_at}},updated time:{{$item->updated_at}}
-                            </p>
-                        </div>
-                        <div class="row" style="position:relative;">
-                            <h6 style="color:black;">
-                                {{$item->about}}
+            <div class="news-card">
+                <div class="news-header">
+                    <img src="{{asset('uploads/news/' .$item->profile_image)}}" alt="News Image" class="news-image">
+                    <h2 class="news-title">{{$item->headline}}</h2>
+                </div>
+                <p class="news-content">
+                    {{$item->about}}
+                </p>
+                <div class="news-actions">
+                    <button class="love-btn">❤️ Love</button>
+                    <button class="comment-btn">💬 Comment</button>
+                </div>
+            </div>
 
-                            </h6>
-                        </div>
-                        <div class="row"><img src="{{asset('uploads/news/' .$item->profile_image)}}" width="80px;" id="image-preview"></div><br>
-                        
-                    </td>
-
-                </table>
-            </div><br>
             @endforeach
 
         </div><br><br>
-        
+
 
 
 

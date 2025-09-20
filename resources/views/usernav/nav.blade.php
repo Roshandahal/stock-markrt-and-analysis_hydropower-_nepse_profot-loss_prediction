@@ -12,31 +12,79 @@
 </head>
 <!-- for making style of the navication  -->
 <style>
-.navication{
-    background-color: black;
-    color: white;
+/* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0b0c10;
+    padding: 12px 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.nav-link{
-    color: white;
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.brand-text {
+    color: #ffffff;
+    font-size: 20px;
     font-weight: bold;
-    font-style: italic;
+    letter-spacing: 1px;
 }
-.nav-link:hover{
-    color: yellow;
-    font-weight: bold;
-    font-style: italic;
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
 }
-/* for admin login  */
-.adminlink{
-    color: white;
-    font-weight: bold;
-    font-style: italic;
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
 }
-.adminlink:hover{
-    color: red;
-    font-weight: bold;
-    font-style: italic;
+
+.nav-links a:hover {
+    color: #00d4ff;
 }
+
+
+
+
+
+
+
+.site-footer {
+    background-color: #0b0c10;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 </style>
 
 
@@ -44,40 +92,27 @@
 
 
 <body>
-    <nav class="navbar navbar-expand-lg navication">
-        <div class="container">
-            <a class="navbar-brand" href="#" style="color: yellow; font-weight:bold;">Blog|website</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('/') }}">Home</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/about') }}">About us</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link adminlink" href="{{ url('/admin/login') }}">Admin</a>
-                    </li>
-                    
-                    
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
-
-
-
-
+    <nav class="navbar">
+    <div class="nav-left">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+        </a>
+        <span class="brand-text">RK.Dessertation $$$</span>
+    </div>
+    <ul class="nav-links">
+        <li><a  href="{{ url('/') }}">Home</a></li>
+        <li><a href="{{ url('/blog') }}">News</a></li>
+        <li><a href="#">Analysis</a></li>
+        <li><a href="{{ url('/admin/login') }}">Admin</a></li>
+    </ul>
+</nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>    
 </body>
-
 </html>
 @yield('nav')
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; {{ date('Y') }} Sharemarket Prediction and Analysis. All rights reserved.</p>
+    </div>
+</footer>
